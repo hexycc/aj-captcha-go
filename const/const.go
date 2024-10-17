@@ -3,6 +3,7 @@ package constant
 const (
 	// CodeKeyPrefix 缓存key前缀
 	CodeKeyPrefix = "RUNNING:CAPTCHA:%s"
+	CodeKeySecondPrefix = "RUNNING:CAPTCHA:SECOND:%s"
 
 	// BlockPuzzleCaptcha 滑动验证码服务标识
 	BlockPuzzleCaptcha = "blockPuzzle"

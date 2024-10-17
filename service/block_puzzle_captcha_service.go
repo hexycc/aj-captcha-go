@@ -215,18 +215,19 @@ func (b *BlockPuzzleCaptchaService) Check(token string, pointJson string) error 
 
 	// 校验两个点是否符合
 	if math.Abs(float64(cachePoint.X-userPoint.X)) <= float64(b.factory.config.BlockPuzzle.Offset) && cachePoint.Y == userPoint.Y {
+		s := util.AesEncrypt(fmt.Sprintf("%v---%v", token, pointJson), cachePoint.SecretKey)
+		key := fmt.Sprintf(constant.CodeKeySecondPrefix,s)
+		cache.Set(key,token,b.factory.config.CacheExpireSec)
 		return nil
 	}
 
 	return errors.New("验证失败")
 }
 
-func (b *BlockPuzzleCaptchaService) Verification(token string, pointJson string) error {
-	err := b.Check(token, pointJson)
-	if err != nil {
-		return err
+func (b *BlockPuzzleCaptchaService) Verification(captchaVerification string) error {
+	key := fmt.Sprintf(constant.CodeKeySecondPrefix,captchaVerification)
+	if !b.factory.GetCache().Exists(key) {
+		return errors.New("验证失败")
 	}
-	codeKey := fmt.Sprintf(constant.CodeKeyPrefix, token)
-	b.factory.GetCache().Delete(codeKey)
 	return nil
 }

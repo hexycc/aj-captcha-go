@@ -102,7 +102,7 @@ func NewConfig() *Config {
 ## Installation
 
 ```bash
-go get -u github.com/TestsLing/aj-captcha-go
+go get -u github.com/hexycc/aj-captcha-go
 ```
 
 ## Usage
@@ -113,9 +113,9 @@ go get -u github.com/TestsLing/aj-captcha-go
 package main
 
 import (
-	config2 "github.com/TestsLing/aj-captcha-go/config"
-	"github.com/TestsLing/aj-captcha-go/service"
-	"github.com/TestsLing/aj-captcha-go/const"
+	config2 "github.com/hexycc/aj-captcha-go/config"
+	"github.com/hexycc/aj-captcha-go/service"
+	"github.com/hexycc/aj-captcha-go/const"
 	"github.com/gin-gonic/gin"
 )
 
@@ -196,7 +196,7 @@ func main() {
 在进行项目部署时，需要将 **resource** 目录的资源进行复制到打包文件的同级目录，然后在配置文件中指定 **ResourcePath** 为项目根路径
 
 ## Changelog
-
+- 2024.10.18 更改2次验证
 - 2022.9.29  将静态资源配置暴露
 - 2022.7.12  初次提交Go实现
 

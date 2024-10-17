@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/TestsLing/aj-captcha-go/util"
+	"github.com/hexycc/aj-captcha-go/util"
 	"strconv"
 )
 

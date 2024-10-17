@@ -97,13 +97,7 @@ func (c *ClickWordCaptchaService) Check(token string, pointJson string) error {
 	return nil
 }
 
-func (c *ClickWordCaptchaService) Verification(token string, pointJson string) error {
-	err := c.Check(token, pointJson)
-	if err != nil {
-		return err
-	}
-	codeKey := fmt.Sprintf(constant.CodeKeyPrefix, token)
-	c.factory.GetCache().Delete(codeKey)
+func (c *ClickWordCaptchaService) Verification(captchaVerification string) error {
 	return nil
 }
 

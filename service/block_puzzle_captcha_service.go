@@ -215,7 +215,7 @@ func (b *BlockPuzzleCaptchaService) Check(token string, pointJson string) error 
 
 	// 校验两个点是否符合
 	if math.Abs(float64(cachePoint.X-userPoint.X)) <= float64(b.factory.config.BlockPuzzle.Offset) && cachePoint.Y == userPoint.Y {
-		val:=fmt.Sprintf("%v---%v", token, pointJson)
+		val:=fmt.Sprintf("%v---%v", token, userPointJson)
 		s := util.AesEncrypt(val, cachePoint.SecretKey)
 		key := fmt.Sprintf(constant.CodeKeySecondPrefix,s)
 		fmt.Println("Check Val",val,"SecretKey",cachePoint.SecretKey,"Key",key)
